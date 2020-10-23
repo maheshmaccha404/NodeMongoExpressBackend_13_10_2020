@@ -10,6 +10,13 @@ router.get('/', (req, res) => {
         if (!err) { 
             // console.log(docs)
             res.send(docs);
+            // res.write('<html>');
+            // res.write('<head> <title> Hello TutorialsPoint </title> </head>');
+            // res.write(' <body> Hello Tutorials Point </body>');
+            // res.write('</html>');
+            // // res.write(docs);
+            // res.json(docs)
+            // res.end();
         }
         else { console.log('Error in Retriving category :' + JSON.stringify(err, undefined, 2)); }
     });

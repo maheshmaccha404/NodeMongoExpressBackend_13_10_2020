@@ -6,6 +6,23 @@ var { Product } = require('../models/product');
 var { Category } = require('../models/category');
 
 // => localhost:3000/product/
+
+router.get('/list', function(req, res, next) {
+    Product.paginate({}, { page : 1 , limit: 1 }, function(err, result) {
+        res.send(result)
+    });
+});
+
+router.get('/:page-:limit', function(req, res, next) {
+    var page=req.params.page || 1;
+    var r_limit=req.params.limit || 2;
+    var limit=parseInt(r_limit);
+    Product.paginate({}, { page: page, limit:limit}, function(err, result) {
+        res.send(result)
+    });
+});
+
+
 router.get('/', (req, res) => {
     Product.find((err, docs) => {
         if (!err) { 
